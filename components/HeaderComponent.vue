@@ -1,18 +1,13 @@
 <script setup lang="ts">
+
 const searchQuery = ref('')
-import Logo from './icons/Logo.vue'
-
-
-watchEffect(() => {
-    console.log(searchQuery.value)
-})
 
 </script>
 
 <template>
     <nav class="flex flex-row justify-between gap-12 px-16 py-6 border-b-2 border-b-gray items-center">
         <div class="brand min-w-fit">
-            <Logo />
+            <IconsLogo />
         </div>
         <div class="w-8 h-8 shrink-0 fill-white shadow-lg rounded-full grid place-items-center translate-x-3/4">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +30,7 @@ watchEffect(() => {
         </div>
         <div class="profile-and-notification min-w-fit flex items-center gap-4">
             <div class="notification">
-                <Notification />
+                <IconsNotification />
             </div>
             <div class="aspect-square bg-contain h-[2.8rem] bg-[url('../../assets/img/user-1.png')] rounded-full">
             </div>
