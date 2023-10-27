@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-
 const props = defineProps<{
     inputClasses: string[],
     modelValue: string,
@@ -11,7 +9,7 @@ const inputClassesProperties = computed(() => props.inputClasses.join(' '))
 </script>
 
 <template>
-    <div class="h-full">
+    <div>
         <input type="search" :class="inputClassesProperties" :placeholder="placeholder"
             @input="$emit('update:modelValue', $event.target && ($event.target as HTMLInputElement).value)"
             class="h-full" />

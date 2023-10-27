@@ -1,13 +1,27 @@
 <script lang="ts" setup>
+import { useRoute } from 'vue-router'
 import HeaderComponent from '../components/HeaderComponent.vue';
+import SideBar from '../components/SideBar.vue';
+
+const route = useRoute()
+
+
+const company = {
+    name: 'Cheta And Daughters Limited',
+    regNo: 'RC123456789'
+}
 </script>
 
 
 <template>
     <HeaderComponent />
-    <div class="mt-6 sm:mt-10 flex justify-center space-x-6 text-sm">
-        <input type="search"
-            class="hidden sm:flex items-center w-72 text-left space-x-3 px-4 h-12 bg-white ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm text-slate-400 dark:bg-slate-800 dark:ring-0 dark:text-slate-300 dark:highlight-white/5 dark:hover:bg-slate-700">
-    </div>
+    <main class="flex">
+        <nav class="side basis-2/12 bg-white border-r-2 border-r-gray-light">
+            <SideBar :company="company" :is-dashboard="route.meta.name === 'dashboard'" />
+        </nav>
+        <section class="grow">
+            <slot />
+        </section>
+    </main>
 </template>
   

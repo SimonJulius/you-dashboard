@@ -9,12 +9,20 @@ export default {
   ],
   theme: {
     colors: {
-      'teal': '#46B2C8',
+      'teal': {
+        DEFAULT: '#46B2C8',
+        dark: '#115766'
+      },
       'dark': '#000',
       'red': '#aa3333',
+      'white': '#fff',
+      'link': '#3056D3',
       'gray': {
         DEFAULT: '#F1F1F1',
-        dark: '#999999'
+        'fade': '#C4C4C4',
+        'dark': '#999999',
+        'light': '#F1F1F1',
+        '400': '#828282'
       }
     },
     extend: {
