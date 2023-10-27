@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const searchQuery = ref('')
+import Logo from './icons/Logo.vue'
 
 
 watchEffect(() => {

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import SideBar from '../components/SideBar.vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 
