@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useScreen } from 'vue-screen'
+const screen = useScreen()
 
 definePageMeta({
     layout: "dashboard-layout",
@@ -26,6 +28,7 @@ const shouldFoldLeftBar = ref(false)
 const toggleShouldFoldLeft = () => shouldFoldLeftBar.value = !shouldFoldLeftBar.value
 
 const toggleFoldBar = () => foldBars.value = !foldBars.value
+
 </script>
 
 <template>

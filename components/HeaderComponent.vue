@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const searchQuery = ref('')
 
 </script>
@@ -32,9 +31,10 @@ const searchQuery = ref('')
             <div class="notification">
                 <IconsNotification />
             </div>
-            <div class="aspect-square bg-contain h-[2.8rem] bg-[url('../../assets/img/user-1.png')] rounded-full">
+            <div
+                class="aspect-square bg-contain h-[1.6rem] md:h-[2.8rem] bg-[url('../../assets/img/user-1.png')] rounded-full">
             </div>
-            <div class="text-sm text-dark font-medium leading-normal flex gap-2 items-center">
+            <div class="text-sm text-dark font-medium leading-normal gap-2 items-center hidden md:flex">
                 <span>Solomon</span>
 
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
