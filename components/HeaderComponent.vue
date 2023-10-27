@@ -23,7 +23,7 @@ const searchQuery = ref('')
                 </defs>
             </svg>
         </div>
-        <div class="search grow">
+        <div class="search grow min-w-fit">
             <search-bar placeholder="Search for anything here"
                 :input-classes="['font-sans', 'p-4', 'bg-gray', 'block', 'text-sm', 'leading-5', 'w-full', 'text-slate-500', 'shadow-sm', 'focus:outline-none', 'focus:ring', 'focus:ring-rose-200', 'focus:border-rose-500', 'dark:text-slate-400', 'dark:placeholder:text-slate-600', 'dark:bg-slate-900', 'dark:border-rose-500', 'dark:focus:ring-rose-900', 'dark:focus:border-rose-600']"
                 v-model="searchQuery" />

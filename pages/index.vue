@@ -18,15 +18,24 @@ const setAgentCrumb = (activeCrumb: string) => {
 const setTaskActiveCrumb = (activeCrumb: string) => {
     taskActiveCrumb.value = activeCrumb
 }
+
+const foldBars = ref(false)
+
+const shouldFoldLeftBar = ref(false)
+
+const toggleShouldFoldLeft = () => shouldFoldLeftBar.value = !shouldFoldLeftBar.value
+
+const toggleFoldBar = () => foldBars.value = !foldBars.value
 </script>
 
 <template>
     <div class="h-6 bg-white"></div>
     <main class="bg-size bg-cover flex justify-between">
-        <section class="right-section w-3/12 bg-white">
+        <section class="right-section  bg-white  zoomIn zoomOut duration-300 transition-all"
+            :class="{ 'w-1/12': foldBars, 'w-3/12': !foldBars }">
             <header class="bg-teal text-white pl-3 mb-2 relative">
                 <span>Task</span>
-                <button class="absolute left-full border bg-dark">
+                <button class="absolute left-full border bg-dark" @click="toggleFoldBar">
                     <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M15.9647 17.9228C16.1458 17.7305 16.2434 17.4743 16.2362 17.2102C16.2291 16.9461 16.1177 16.6956 15.9264 16.5134L12.29 13.021L15.7325 9.38599C15.9135 9.19363 16.0111 8.93743 16.004 8.67334C15.9968 8.40925 15.8854 8.15874 15.6941 7.97651C15.5986 7.88535 15.486 7.81399 15.3628 7.76655C15.2396 7.71912 15.1083 7.69654 14.9763 7.70013C14.8444 7.70372 14.7144 7.73341 14.594 7.78747C14.4735 7.84154 14.365 7.91891 14.2746 8.01514L10.1515 12.3689C10.0604 12.4644 9.989 12.577 9.94156 12.7002C9.89413 12.8233 9.87155 12.9547 9.87514 13.0867C9.87874 13.2186 9.90842 13.3486 9.96248 13.469C10.0165 13.5895 10.0939 13.698 10.1901 13.7884L14.5453 17.9615C14.6407 18.0526 14.7533 18.124 14.8765 18.1714C14.9997 18.2188 15.1311 18.2414 15.263 18.2378C15.395 18.2342 15.525 18.2046 15.6454 18.1505C15.7658 18.0964 15.8744 18.0191 15.9647 17.9228Z"
@@ -36,15 +45,17 @@ const setTaskActiveCrumb = (activeCrumb: string) => {
                 </button>
             </header>
             <nav class="grid grid-cols-3 place-items-center border-b-2 border-b-gray-fade">
-                <div class="task-status text-xs font-normal leading-normal capitalize h-full w-full text-center cursor-pointer"
+                <div class="task-status zoomIn zoomOut duration-300 transition-all text-xs font-normal leading-normal capitalize h-full w-full text-center cursor-pointer"
                     @click="setTaskActiveCrumb('un-assigned')" :class="{ 'border-b': taskActiveCrumb === 'un-assigned' }">24
                     Unassigned
                 </div>
-                <div class="task-status text-xs font-normal leading-normal capitalize h-full w-full text-center cursor-pointer"
-                    @click="setTaskActiveCrumb('assigned')" :class="{ 'border-b': taskActiveCrumb === 'assigned' }">12
+                <div class="task-status text-xs zoomIn zoomOut duration-300 transition-all font-normal leading-normal capitalize h-full w-full text-center cursor-pointer"
+                    @click="setTaskActiveCrumb('assigned')"
+                    :class="{ 'border-b': taskActiveCrumb === 'assigned', '-translate-x-[150%] z-[-1]': foldBars }">12
                     assigned</div>
-                <div class="task-status text-xs font-normal leading-normal capitalize h-full w-full text-center cursor-pointer"
-                    @click="setTaskActiveCrumb('completed')" :class="{ 'border-b': taskActiveCrumb === 'completed' }">30
+                <div class="task-status text-xs font-normal zoomIn zoomOut duration-300 transition-all leading-normal capitalize h-full w-full text-center cursor-pointer"
+                    @click="setTaskActiveCrumb('completed')"
+                    :class="{ 'border-b': taskActiveCrumb === 'completed', ' -translate-x-[150%] z-[-1]': foldBars }">30
                     Completed</div>
             </nav>
             <div v-for="(task, index) in tasks" :key="index" class="flex py-3 px-4 gap-4"
@@ -60,7 +71,8 @@ const setTaskActiveCrumb = (activeCrumb: string) => {
                     <div class="text-[10px] text-gray-400">Assign<br />Agent</div>
                 </div>
 
-                <div class="summary">
+                <div class="summary zoomIn zoomOut duration-300 transition-all"
+                    :class="{ '-translate-x-[150%] z-[-1]': foldBars }">
                     <div class="name font-medium text-xs">Abiodun Olawale Solomon</div>
                     <div class="address text-xs text-gray-fade mt-1 flex gap-3 items-center">
                         <div>12b Emmanuel Hign street, Sur...</div>
@@ -131,10 +143,12 @@ const setTaskActiveCrumb = (activeCrumb: string) => {
                 </div>
             </div>
         </section>
-        <section class="left-section w-3/12 bg-white">
+        <section class="left-section  bg-white zoomIn zoomOut duration-300 transition-all"
+            :class="{ 'w-1/12': shouldFoldLeftBar, 'w-3/12': !shouldFoldLeftBar }">
             <header class="bg-teal text-white pl-3 mb-2 relative">
                 <span>Agents</span>
-                <button class="absolute right-full border bg-dark">
+                <button class="absolute right-full border bg-dark zoomIn zoomOut duration-300 transition-all"
+                    @click="toggleShouldFoldLeft">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M9.17 6.99999C8.98375 7.18735 8.87921 7.4408 8.87921 7.70499C8.87921 7.96918 8.98375 8.22263 9.17 8.40999L12.71 12L9.17 15.54C8.98375 15.7274 8.87921 15.9808 8.87921 16.245C8.87921 16.5092 8.98375 16.7626 9.17 16.95C9.26297 17.0437 9.37357 17.1181 9.49543 17.1689C9.61729 17.2197 9.74799 17.2458 9.88 17.2458C10.012 17.2458 10.1427 17.2197 10.2646 17.1689C10.3864 17.1181 10.497 17.0437 10.59 16.95L14.83 12.71C14.9237 12.617 14.9981 12.5064 15.0489 12.3846C15.0997 12.2627 15.1258 12.132 15.1258 12C15.1258 11.868 15.0997 11.7373 15.0489 11.6154C14.9981 11.4936 14.9237 11.383 14.83 11.29L10.59 6.99999C10.497 6.90626 10.3864 6.83187 10.2646 6.7811C10.1427 6.73033 10.012 6.70419 9.88 6.70419C9.74799 6.70419 9.61729 6.73033 9.49543 6.7811C9.37357 6.83187 9.26297 6.90626 9.17 6.99999Z"
@@ -145,20 +159,22 @@ const setTaskActiveCrumb = (activeCrumb: string) => {
                 </button>
             </header>
             <nav class="grid grid-cols-3 place-items-center border-b-2 border-b-gray-fade">
-                <div class="task-status text-xs font-normal leading-normal capitalize h-full w-full text-center cursor-pointer"
+                <div class="task-status text-xs font-normal leading-normal capitalize zoomIn zoomOut duration-300 transition-all h-full w-full text-center cursor-pointer"
                     @click="setAgentCrumb('all')" :class="{ 'border-b': agentActiveCrumb === 'all' }">
                     All
                 </div>
-                <div class="task-status text-xs font-normal leading-normal capitalize h-full w-full text-center cursor-pointer"
-                    @click="setAgentCrumb('online')" :class="{ 'border-b': agentActiveCrumb === 'online' }">
+                <div class="task-status text-xs font-normal leading-normal zoomIn zoomOut duration-300 transition-all capitalize h-full w-full text-center cursor-pointer"
+                    @click="setAgentCrumb('online')"
+                    :class="{ 'border-b': agentActiveCrumb === 'online', 'translate-x-[300%] z-[-1]': shouldFoldLeftBar }">
                     <svg class="inline mr-1" width="10" height="10" viewBox="0 0 10 10" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <circle cx="5" cy="5" r="5" fill="#2EB255" />
                     </svg>
                     Online
                 </div>
-                <div class="task-status text-xs font-normal leading-normal capitalize h-full w-full text-center cursor-pointer"
-                    @click="setAgentCrumb('offline')" :class="{ 'border-b': agentActiveCrumb === 'offline' }">
+                <div class="task-status text-xs font-normal zoomIn zoomOut duration-300 transition-all leading-normal capitalize h-full w-full text-center cursor-pointer"
+                    @click="setAgentCrumb('offline')"
+                    :class="{ 'border-b': agentActiveCrumb === 'offline', 'translate-x-[300%] z-[-1]': shouldFoldLeftBar }">
                     <svg class="inline mr-1" width="10" height="10" viewBox="0 0 10 10" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <circle cx="5" cy="5" r="5" fill="#D14349" />
@@ -167,13 +183,15 @@ const setTaskActiveCrumb = (activeCrumb: string) => {
                     Offline
                 </div>
             </nav>
-            <div v-for="(task, index) in tasks" :key="index" class="flex py-3 px-4 gap-4"
+            <div v-for="(task, index) in tasks" :key="index"
+                class="flex zoomIn zoomOut duration-300 transition-all py-3 px-4 gap-4"
                 :class="{ 'border-b-2 border-b-gray-light': index !== tasks.length - 1 }">
                 <div class="profile-picture">
                     <div class="aspect-square bg-contain w-8 bg-[url('../../assets/img/user-1.png')] rounded-full"></div>
                 </div>
 
-                <div class="summary">
+                <div class="summary zoomIn zoomOut duration-300 transition-all"
+                    :class="{ 'translate-x-[300%] z-[-1]': shouldFoldLeftBar }">
                     <div class="name font-medium text-xs">Abiodun Olawale Solomon</div>
                     <div class="address text-xs text-gray-fade mt-1 flex gap-3 items-center justify-between w-full">
                         <div>08069786754</div>

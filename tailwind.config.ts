@@ -29,6 +29,28 @@ export default {
     extend: {
       backgroundImage: {
         'user-1': "url('/img/user-1.png')"
+      },
+      keyframes: {
+        zoomIn: {
+          '0%': {
+            opacity: 0
+          },
+          '100%': {
+            opacity: 1
+          }
+        },
+        zoomOut: {
+          '0%': {
+            opacity: 1
+          },
+          '100%': {
+            opacity: 0
+          }
+        }
+      },
+      animation: {
+        zoomIn: 'zoomIn 300ms ease-in-out',
+        zoomOut: 'zoomOut 300ms ease-in-out',
       }
     },
   },
