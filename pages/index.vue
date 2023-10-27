@@ -194,7 +194,7 @@ const setTaskActiveCrumb = (activeCrumb: string) => {
 
 <style>
 main {
-    background-image: url('~/assets/svg/guyana-distance\ 1.svg');
+    background-image: url('../assets/svg/guyana-distance.svg');
     background-position: 0% 0%;
     background-size: cover;
     background-repeat: no-repeat;
