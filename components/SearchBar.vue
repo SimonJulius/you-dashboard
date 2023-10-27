@@ -11,7 +11,9 @@ const inputClassesProperties = computed(() => props.inputClasses.join(' '))
 </script>
 
 <template>
-    <div>
-        <input type="search" :class="inputClassesProperties" />
+    <div class="h-full">
+        <input type="search" :class="inputClassesProperties" :placeholder="placeholder"
+            @input="$emit('update:modelValue', $event.target && ($event.target as HTMLInputElement).value)"
+            class="h-full" />
     </div>
 </template>
