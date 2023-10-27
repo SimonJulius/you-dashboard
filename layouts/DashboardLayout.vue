@@ -14,7 +14,7 @@ const company = {
     <HeaderComponent />
     <main class="flex">
         <nav class="side basis-2/12 bg-white border-r-2 border-r-gray-light">
-            <SideBar :company="company" :is-dashboard="route.meta.name === 'dashboard'" />
+            <side-bar :company="company" :is-dashboard="route.meta.name === 'dashboard'"></side-bar>
         </nav>
         <section class="grow">
             <slot />
