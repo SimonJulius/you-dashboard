@@ -1,8 +1,5 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router'
-import HeaderComponent from '../components/HeaderComponent.vue';
-import SideBar from '../components/SideBar.vue';
-
 const route = useRoute()
 
 

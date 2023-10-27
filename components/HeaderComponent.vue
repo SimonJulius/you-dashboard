@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import SearchBar from './SearchBar.vue';
-import Logo from './icons/Logo.vue';
-import Notification from './icons/Notification.vue';
-
-
 const searchQuery = ref('')
 
 
